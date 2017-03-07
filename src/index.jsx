@@ -1,9 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import HelloMoskwa from './components/Hello';
+import Buttonas from './components/Buttonas';
+import Login from './components/Login';
 
 require('./../res/styles/index.css');
 
 ReactDOM.render(
-    <h1>Hello, world!</h1>,
+    <div>
+        <HelloMoskwa name="Project"/>
+        <Buttonas />
+        <Login />
+    </div>,
     document.getElementById('app')
 );
