@@ -7,16 +7,21 @@ class Loginas extends React.Component {
 
     render() {
         return (
-            <div className="backgroundStyle">
-                <div className="tableRow">
-                    Prisijungimo vardas:
-                    <input className="inputFloat"></input>
+            <form className="form-horizontal">
+                <div className="loginStyle">
+                    <div className="form-group" >
+                        <div className="col-md-4" >
+                            <input type="text" placeholder="Username" className="form-control" ></input>
+                            <input type="password" placeholder="Password" className="form-control" ></input>
+                            <div className="text-left">
+                                <a href="">Pamiršote slaptažodį?</a>
+                                <p></p>
+                                <button className="btn btn-success">Prisijungti</button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div className="tableRow">
-                    Slaptažodis:
-                    <input className="inputFloat"></input>
-                </div>
-            </div>
+            </form>
         );
     }
 }

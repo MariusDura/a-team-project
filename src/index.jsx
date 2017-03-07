@@ -8,8 +8,6 @@ require('./../res/styles/index.css');
 
 ReactDOM.render(
     <div>
-        <HelloMoskwa name="Project"/>
-        <Buttonas />
         <Login />
     </div>,
     document.getElementById('app')

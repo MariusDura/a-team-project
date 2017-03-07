@@ -1,10 +1,13 @@
 h1 {
     color: red;
 }
-
-.backgroundStyle{
-    background:aquamarine;
-    display : table;
+.body1{
+    background-image: url(../images/Backas2.jpg);
+    background-size: 100%;
+    background-repeat:no-repeat;
+}
+.loginStyle{
+    transform: translate(35%,200%);
 }
 
 .tableRow{
@@ -13,4 +16,50 @@ h1 {
 
 .inputFloat{
     float:right;
+    width: 200px;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 2px;
+    font-size: 16px;
+    background-color: white;   
+    padding: 10px 10px 10px 20px;
+}
+
+.buttonLogin {
+  display: inline-block;
+  border-radius: 4px;
+  background-color: #f4511e;
+  border: none;
+  color: #FFFFFF;
+  text-align: center;
+  font-size: 28px;
+  padding: 20px;
+  width: 200px;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 5px;
+}
+
+.buttonLogin span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.buttonLogin span:after {
+  content: '\00bb';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+
+.buttonLogin:hover span {
+  padding-right: 25px;
+}
+.buttonLogin:hover span:after {
+  opacity: 1;
+  right: 0;
 }
