@@ -1,8 +1,18 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
+import ForgotPassword from './ForgotPassword';
 
 class Loginas extends React.Component {
     ButtonClick() {
         alert("Wrong Button");
+        this.redirectToForgotPassword.bind(this);
+    }
+
+    redirectToForgotPassword () {
+        ReactDOM.render(
+            <ForgotPassword/>,
+            document.getElementById('app')
+        );
     }
 
     render() {
@@ -15,6 +25,8 @@ class Loginas extends React.Component {
             msg='Nieko'
         }
         */
+
+
         return (
 
             <div className="loginStyle">
@@ -24,7 +36,7 @@ class Loginas extends React.Component {
                             <input type="text" placeholder="Username" className="form-control" ></input>
                             <input type="password" placeholder="Password" className="form-control" ></input>
                             <div className="text-left">
-                                <a href="">Pamiršote slaptažodį?</a>
+                                <a onClick={this.redirectToForgotPassword}>Pamiršote slaptažodį?</a>
                                 <p></p>
                                 <button className="btn btn-primary">Prisijungti </button>
                             </div>
