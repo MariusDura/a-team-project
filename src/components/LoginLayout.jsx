@@ -11,22 +11,28 @@ class LoginLayout extends React.Component {
         };
         this.ButtonClick = this.ButtonClick.bind(this);
         this.ButtonClick1 = this.ButtonClick1.bind(this);
+        this.ButtonClick2=this.ButtonClick2.bind(this);
     }
 
 
     ButtonClick() {
-        this.setState({ loginIsHidden: false, registerIsHidden: true })
+        this.setState({ loginIsHidden: true, registerIsHidden: true })
     }
 
     ButtonClick1() {
         this.setState({ registerIsHidden: false, loginIsHidden: true })
     }
 
+    ButtonClick2() {
+        this.setState({ registerIsHidden: true, loginIsHidden: false })
+    }
+
     render() {
         const buttons = (
             <div>
+                <button className="btn btn-default btn-xs" style={{ float: 'left' }} onClick={this.ButtonClick}>Home Page</button>
                 <button className="btn-success" style={{ float: 'right' }} onClick={this.ButtonClick1}>Register</button>
-                <button className="btn-primary" style={{ float: 'right' }} onClick={this.ButtonClick}>Login</button>
+                <button className="btn-primary" style={{ float: 'right' }} onClick={this.ButtonClick2}>Login</button>
             </div>
         );
 
@@ -48,9 +54,19 @@ class LoginLayout extends React.Component {
             );
         }
 
-        return (
-            buttons
-        );
+        else {
+            return (
+                <div>
+                    {buttons}
+                    <br></br>
+                    <div className="container col-sm-8">
+                        <div className="calendarStyle">
+                            <div className="calendar calendarStyle"></div>
+                        </div>
+                    </div>
+                </div>
+            );
+        }
     }
 }
 
