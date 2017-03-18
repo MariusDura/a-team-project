@@ -4,10 +4,14 @@ import HelloMoskwa from './components/Hello';
 import Buttonas from './components/Buttonas';
 import Login from './components/Login';
 import LoginLayout from './components/LoginLayout';
+import Calendar from './components/Calendar';
 
 require('./../res/styles/index.css');
 
+
 ReactDOM.render(
-    <LoginLayout />,
+    <div>
+        <LoginLayout />
+    </div>,
     document.getElementById('app')
 );
