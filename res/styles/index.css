@@ -4,7 +4,7 @@ h1 {
 #app {
   height: 100%;
 }
-body{
+.body1{
     background-image: url(../images/Backas2.jpg);
     background-size: 100%;
     background-repeat:no-repeat;
@@ -69,10 +69,4 @@ body{
 .buttonLogin:hover span:after {
   opacity: 1;
   right: 0;
-}
-
-.calendarStyle{
-  background: white;
-  height: 100%;
-  width: 100%;
 }
