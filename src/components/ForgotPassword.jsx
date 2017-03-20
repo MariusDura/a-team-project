@@ -54,8 +54,10 @@ export default class ForgotPassword extends Component {
                                     <div>
                                         <label htmlFor="sf-input-email">Email Adress</label>
                                         <input
+
                                             className="form-control"
                                             type="text"
+                                            placeholder = "Forgot password?"
                                             ref={(input) => this.input = input}
                                         />
                                     </div>
