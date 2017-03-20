@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router';
 
 export default class ForgotPassword extends Component {
     constructor(props) {
@@ -19,61 +20,76 @@ export default class ForgotPassword extends Component {
 
         const regex = /^([0-9a-zA-Z]([-_\\.]*[0-9a-zA-Z]+)*)@([0-9a-zA-Z]([-_\\.]*[0-9a-zA-Z]+)*)[\\.]([a-zA-Z]{2,9})$/;
 
-        if(regex.test(email)) {
+        if (regex.test(email)) {
             localValidStatus = true;
             localErrorMessage = "";
-        }else {
+        } else {
             localValidStatus = false;
             localErrorMessage = "Your e-mail adress format is incorrect";
         }
 
         console.log(localValidStatus);
-        if(!(localValidStatus == this.state.valid)) {
-            this.setState( {
+        if (!(localValidStatus == this.state.valid)) {
+            this.setState({
                 valid: localValidStatus,
                 errorMessage: localErrorMessage
             });
         }
-        if(localErrorMessage != "")
+        if (localErrorMessage != "")
             alert(localErrorMessage);
         e.preventDefault();
     }
 
+    navigate() {
+        this.props.history.pushState(null, '/');
+    }
+
+
     render() {
+        const buttons2 = (
+            < div >
+                <button className="btn btn-default btn-xs" style={{ float: 'left' }} onClick={this.navigate.bind(this)}>Home Page</button>
+                <Link to="register"><button className="btn btn-success" style={{ float: 'right' }}>Register</button></Link>
+                <Link to="login"><button className="btn btn-primary" style={{ float: 'right' }}>Login</button>></Link>
+            </div >
+        );
         return (
-            <div className="container" >
-                <form onSubmit={this.validate.bind(this)}>
-                    <div className="vertical-center">
-                        <div>
-                            <div className="form-group">
-                                <h1>Forgot password?</h1>
-                                <p>Enter the email address you use to sign in, and we'll send you an email with instructions to
+            <div>
+                {buttons2}
+                <div className="container" >
+                    <form onSubmit={this.validate.bind(this)}>
+                        <div className="vertical-center">
+                            <div>
+                                <div className="form-group">
+                                    <h1>Forgot password?</h1>
+                                    <p>Enter the email address you use to sign in, and we'll send you an email with instructions to
                                     reset your password.</p>
-                                <fieldset>
+                                    <fieldset>
+                                        <div>
+                                            <label htmlFor="sf-input-email">Email Adress</label>
+                                            <input
+                                                className="form-control"
+                                                type="text"
+                                                ref={(input) => this.input = input}
+                                            />
+                                        </div>
+                                    </fieldset>
+                                </div>
+                            </div>
+                            <div className="form-group">
+                                <div>
                                     <div>
-                                        <label htmlFor="sf-input-email">Email Adress</label>
                                         <input
-                                            className="form-control"
-                                            type="text"
-                                            ref={(input) => this.input = input}
+                                            type="submit"
+                                            value="Send email"
+                                            className="btn btn-primary"
                                         />
                                     </div>
-                                </fieldset>
-                            </div>
-                        </div>
-                        <div className="form-group">
-                            <div>
-                                <div>
-                                    <input
-                                        type="submit"
-                                        value="Send email"
-                                        className="btn btn-primary"
-                                    />
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </form>
+                    </form>
+                </div>
             </div>
         )
     }
