@@ -13,9 +13,10 @@ class LoginLayout extends React.Component {
             loginIsHidden: true,
             registerIsHidden: true
         };*/
-        this.ButtonClick = this.ButtonClick.bind(this);
+        /*this.ButtonClick = this.ButtonClick.bind(this);
         this.ButtonClick1 = this.ButtonClick1.bind(this);
         this.ButtonClick2 = this.ButtonClick2.bind(this);
+        */
     }
 
 

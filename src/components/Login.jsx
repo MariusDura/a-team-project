@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import ForgotPassword from './ForgotPassword';
 import LoginLayout from './LoginLayout';
-import ForgotPassword from './ForgotPassword.jsx';
 import But from './But.jsx';
 import { Link } from 'react-router';
 

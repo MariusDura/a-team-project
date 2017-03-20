@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router';
 
+
 export default class ForgotPassword extends Component {
     constructor(props) {
         super(props);
@@ -57,40 +58,44 @@ export default class ForgotPassword extends Component {
             <div>
                 {buttons2}
                 <div className="container" >
-                    <form onSubmit={this.validate.bind(this)}>
-                        <div className="vertical-center">
-                            <div>
-                                <div className="form-group">
-                                    <h1>Forgot password?</h1>
-                                    <p>Enter the email address you use to sign in, and we'll send you an email with instructions to
+                    <div className="LoginStyle">
+                        <form onSubmit={this.validate.bind(this)}>
+                            <div className="vertical-center">
+                                <div>
+                                    <div className="form-group">
+                                        <h1>Forgot password?</h1>
+                                        <p>Enter the email address you use to sign in, and we'll send you an email with instructions to
                                     reset your password.</p>
-                                    <fieldset>
+                                        <fieldset>
+                                            <div>
+                                                <label htmlFor="sf-input-email">Email Address</label>
+                                                <input
+                                                    className="form-control"
+                                                    type="text"
+                                                    placeholder="Put your email address here..."
+                                                    ref={(input) => this.input = input}
+                                                />
+                                            </div>
+                                        </fieldset>
+                                    </div>
+                                </div>
+                                <div className="form-group">
+                                    <div>
                                         <div>
-                                            <label htmlFor="sf-input-email">Email Adress</label>
                                             <input
-                                                className="form-control"
-                                                type="text"
-                                                ref={(input) => this.input = input}
+                                                type="submit"
+                                                value="Send email"
+                                                className="btn btn-primary"
                                             />
                                         </div>
-                                    </fieldset>
-                                </div>
-                            </div>
-                            <div className="form-group">
-                                <div>
-                                    <div>
-                                        <input
-                                            type="submit"
-                                            value="Send email"
-                                            className="btn btn-primary"
-                                        />
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    </form>
+                        </form>
+                    </div>
                 </div>
             </div>
+
         )
     }
 }
