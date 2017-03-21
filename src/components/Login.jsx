@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import ForgotPassword from './ForgotPassword';
 import LoginLayout from './LoginLayout';
+import But from './But.jsx';
 import { Link } from 'react-router';
 
 class Loginas extends React.Component {
