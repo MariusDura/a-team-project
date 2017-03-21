@@ -83,3 +83,5 @@ body{
   height: 100%;
   width: 100%;
 }
+
+div.wrap {height:100%; overflow: hidden;}
