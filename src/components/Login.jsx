@@ -54,7 +54,7 @@ class Loginas extends React.Component {
                                 <div className="text-left">
                                     <Link to="forgotPassword"><a>Pamiršote slaptažodį?</a></Link>
                                     <p></p>
-                                    <button className="btn btn-primary">Prisijungti </button>
+                                    <Link to="userInterface"><button className="btn btn-primary">Prisijungti</button></Link>
                                     {this.props.children}
                                 </div>
                             </div>

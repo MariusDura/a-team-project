@@ -7,6 +7,7 @@ import LoginLayout from './components/LoginLayout';
 import ForgotPassword from './components/ForgotPassword';
 import Calendar from './components/Calendar';
 import Register from './components/Register';
+import UserInterface from './components/UserInterface';
 
 
 require('./../res/styles/index.css');
@@ -22,6 +23,7 @@ ReactDOM.render(
             <Route path="register" component={Register}> </Route>
             <Route path="login" component={Login}> </Route>
             <Route path="forgotPassword" component={ForgotPassword}> </Route>
+            <Route path="userInterface" component={UserInterface}> </Route>
         </Route>
     </Router>
     ,
