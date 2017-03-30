@@ -1,22 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router';
 
-/*const mysql = require('mysql');
-const connection = mysql.createConnection({
-    host: 'localhost',
-    user: 'root',
-    password: '',
-    database: 'project'
-
-});
-connection.connect(function (err) {
-            if (!err) {
-                console.log("Database is connected ... nn");
-            } else {
-                console.log("Error connecting database ... nn");
-            }
-        });
-*/
 class Register extends React.Component {
 
     constructor() {
@@ -34,32 +18,6 @@ class Register extends React.Component {
         alert("Wrong Button");
     }
 
-    /*insertPersonToDatabase() {
-        connection.connect(function (err) {
-            if (!err) {
-                console.log("Database is connected ... nn");
-            } else {
-                console.log("Error connecting database ... nn");
-            }
-        });
-        let array = {
-            userName: document.getElementById("name"),
-            userSurname: document.getElementById("surname"),
-            userEmail: document.getElementById("email"),
-            userPassword: document.getElementById("password")
-        };
-
-        connection.query('INSERT INTO users SET?', array, function (err, result) {
-            if (err) {
-                console.log(err.message);
-            } else {
-                console.log("Viskas pavyko");
-                callback();
-            }
-        })
-    }
-    */
-
     navigate() {
         this.props.history.pushState(null, '/');
     }
@@ -75,7 +33,7 @@ class Register extends React.Component {
         );
         return (
             <div>
-                {buttons2}
+                {/*{buttons2}*/}
                 <div className="loginStyle">
                     <form className="col-lg-3">
                         <div className="form-group" >
