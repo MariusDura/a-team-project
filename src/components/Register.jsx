@@ -7,21 +7,31 @@ class Register extends React.Component {
         super();
         this.state = {
             loginIsHidden: true,
-            register: true
+            register: false
         };
-        this.ButtonClick = this.ButtonClick.bind(this);
-        //this.ButtonClick1 = this.ButtonClick1.bind(this);
+
     }
 
-    ButtonClick() {
-        this.setState({ register: false });
-        alert("Wrong Button");
-    }
+    onSubmit(e) {
+        e.preventDefault();
 
+        this.setState({
+            register: true
+        });
+    }
     navigate() {
         this.props.history.pushState(null, '/');
     }
 
+    passwordConfirmation() {
+        const password = this.password.value;
+        const passwordConfirmation = this.passwordConfirm.value;
+
+        if (password != passwordConfirmation)
+            this.passwordConfirm.setCustomValidity("Passwords Don't Match");
+        else
+            this.passwordConfirm.setCustomValidity('');
+    }
 
     render() {
         const buttons2 = (
@@ -35,17 +45,57 @@ class Register extends React.Component {
             <div>
                 {/*{buttons2}*/}
                 <div className="loginStyle">
-                    <form className="col-lg-3">
+                    <form className="col-lg-3" onSubmit={this.onSubmit.bind(this)}>
                         <div className="form-group" >
                             <div >
-                                <input type="text" placeholder="Name" className="form-control" id="name"></input>
-                                <input type="text" placeholder="Surname" className="form-control" id="surname" ></input>
-                                <input type="email" placeholder="Email" className="form-control" id="email" ></input>
-                                <input type="password" placeholder="Password" className="form-control" id="password" ></input>
-                                <input type="password" placeholder="Repeat password" className="form-control" id="name"></input>
+                                <input
+                                    ref={(input) => this.firstName = input}
+                                    pattern="[a-zA-Z]{5,}"
+                                    required title="Field can not be empty and valid inputs are required."
+                                    type="text"
+                                    placeholder="Name"
+                                    className="form-control"
+                                    id="name"
+                                />
+                                <input
+                                    ref={(input) => this.lastName = input}
+                                    type="text"
+                                    placeholder="Surname"
+                                    className="form-control"
+                                    id="surname"
+                                    pattern="[a-zA-Z]{5,}"
+                                    required title="Field can not be empty and valid inputs are required."
+                                />
+                                <input
+                                    ref={(input) => this.emailAddress = input}
+                                    type="email"
+                                    placeholder="Email"
+                                    className="form-control"
+                                    id="email"
+                                    required title="Field is required"
+                                />
+                                <input
+                                    ref={(input) => this.password = input}
+                                    type="password"
+                                    placeholder="Password"
+                                    className="form-control"
+                                    id="password"
+                                    pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+                                    required title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"
+                                />
+                                <input
+                                    type="password"
+                                    placeholder="Repeat password"
+                                    className="form-control"
+                                    id="passwordconfirmation"
+                                    required title="6 to 18 characters"
+                                    pattern=".{6,18}"
+                                    onInput={this.passwordConfirmation.bind(this)}
+                                    ref={(input) => this.passwordConfirm = input}
+                                />
                                 <div className="text-left">
                                     <p></p>
-                                    <button className="btn btn-success" /*onClick={this.insertPersonToDatabase}*/ onClick={this.ButtonClick}>Registruotis </button>
+                                    <input type="submit" value="Sign Up" className="btn btn-success" />
                                 </div>
                             </div>
                         </div>
