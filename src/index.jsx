@@ -20,7 +20,7 @@ ReactDOM.render(
             <Route path="register" component={Register}> </Route>
             <Route path="login" component={Login}> </Route>
             <Route path="forgotPassword" component={ForgotPassword}> </Route>
-            <Route path="userInterface" component={UserInterface}> 
+            <Route path="userInterface" component={UserInterface}>
                 <Route path="/userInterface/AddReminder" component={AddReminder} ></Route>
             </Route>
             <Route path="calendar" component={Calendar}></Route>
