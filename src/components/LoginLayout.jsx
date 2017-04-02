@@ -21,8 +21,8 @@ class LoginLayout extends React.Component {
             < div >
                 <button className="btn btn-default btn-xs" style={{ float: 'left' }} onClick={this.navigate.bind(this)}>Home Page</button>
                 <Link to="register"><button className="btn btn-success" style={{ float: 'right' }}>Register</button></Link>
-                <Link to="login"><button className="btn btn-primary" style={{ float: 'right' }}>Login</button>></Link>
-                <Link to="calendar"><button className="btn btn-primary" style={{ float: 'right' }}>Calendar</button>></Link>
+                <Link to="login"><button className="btn btn-primary" style={{ float: 'right' }}>Login</button></Link>
+                <Link to="calendar"><button className="btn btn-primary" style={{ float: 'right' }}>Calendar</button></Link>
             </div >
         );
 
