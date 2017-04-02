@@ -47,16 +47,7 @@ export default class ForgotPassword extends Component {
 
 
     render() {
-        const buttons2 = (
-            < div >
-                <button className="btn btn-default btn-xs" style={{ float: 'left' }} onClick={this.navigate.bind(this)}>Home Page</button>
-                <Link to="register"><button className="btn btn-success" style={{ float: 'right' }}>Register</button></Link>
-                <Link to="login"><button className="btn btn-primary" style={{ float: 'right' }}>Login</button>></Link>
-            </div >
-        );
         return (
-            <div>
-                {buttons2}
                 <div className="container" >
                     <div className="LoginStyle">
                         <form onSubmit={this.validate.bind(this)}>
@@ -94,8 +85,6 @@ export default class ForgotPassword extends Component {
                         </form>
                     </div>
                 </div>
-            </div>
-
         )
     }
 }

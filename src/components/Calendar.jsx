@@ -33,7 +33,7 @@ export default class Calendar extends React.Component {
             <div>
                 {/*{this.props.children}*/}
                 <br></br>
-                <div className="container col-sm-8">
+                <div className="container col-sm-7">
                     <div className="calendarStyle">
                         <div className="calendar"></div>
                     </div>

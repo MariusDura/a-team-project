@@ -1,24 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import ForgotPassword from './ForgotPassword';
-import LoginLayout from './LoginLayout';
 import { Link } from 'react-router';
 
 class Loginas extends React.Component {
 
     ButtonClick() {
         alert("Wrong Button");
-        this.redirectToForgotPassword.bind(this);
-    }
-
-    redirectToForgotPassword() {
-        ReactDOM.render(
-            <LoginLayout>
-                <ForgotPassword />
-            </LoginLayout>
-            ,
-            document.getElementById('app')
-        );
     }
 
     navigate() {
