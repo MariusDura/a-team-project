@@ -5,6 +5,7 @@
   "main": "index.jsx",
   "private": true,
   "scripts": {
+    "start": "node server.js",
     "build": "webpack",
     "build-prod": "webpack --config ./webpack.production.config.js",
     "server": "webpack-dev-server",
@@ -15,12 +16,16 @@
   "license": "ISC",
   "homepage": "",
   "dependencies": {
+    "body-parser": "^1.17.1",
+    "express": "^4.15.2",
+    "history": "^1.17.0",
+    "mysql": "^2.13.0",
     "react": "^15.4.2",
     "react-dom": "^15.4.2",
     "react-redux": "^5.0.3",
     "react-router": "^1.0.3",
     "redux": "^3.6.0",
-    "history": "^1.17.0"
+    "superagent": "^3.5.2"
   },
   "devDependencies": {
     "babel-core": "^6.22.1",

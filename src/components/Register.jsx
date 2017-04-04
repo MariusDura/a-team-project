@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router';
+import request from 'superagent';
 
 class Register extends React.Component {
 
@@ -9,7 +10,6 @@ class Register extends React.Component {
             loginIsHidden: true,
             register: false
         };
-
     }
 
     onSubmit(e) {
@@ -18,6 +18,26 @@ class Register extends React.Component {
         this.setState({
             register: true
         });
+
+        request
+            .post('/api/projects/useriai/add')
+            .send({
+                firstname: this.firstName.value, lastName: this.lastName.value,
+                email: this.emailAddress.value, password: this.password.value
+            })
+            .end(function (err, res) {
+                if (err) {
+                    console.log("Error: " + err);
+                }
+                // console.log(res.req._data);
+                console.log("wwww" + res.text);
+                if (res.text == "false") {
+                    alert("This email address is already in use");
+                }
+                if (res.text == "true") {
+                    alert("You have successfully registered");
+                }
+            });
     }
     navigate() {
         this.props.history.pushState(null, '/');
@@ -96,6 +116,7 @@ class Register extends React.Component {
                                 <div className="text-left">
                                     <p></p>
                                     <input type="submit" value="Sign Up" className="btn btn-success" />
+                                    {/*<button onClick={this.handleClick}> Registruotis </button>*/}
                                 </div>
                             </div>
                         </div>
