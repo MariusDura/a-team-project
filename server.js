@@ -74,4 +74,32 @@ app.post('/api/projects/login', function (req, res) {
     });
 });
 
+app.post('/api/projects/addReminder', function (req, res) {
+    console.log(req.body);
+
+    let array = {
+        title: req.body.title,
+    }
+    console.log(req.body);
+
+    connection.query('INSERT INTO events SET?', array, function (err, result) {
+        if (err) {
+            console.log(err.message);
+            res.send("false");
+        } else {
+            console.log("Eventas įkeltas į duombazę");
+            res.send("true");
+        }
+        res.end();
+    });
+});
+
+app.get('/api/projects/calendarEvents', function (req, res) {
+
+    connection.query('SELECT title,DATE_FORMAT(start,"%m-%d-%Y") as start,DATE_FORMAT(end,"%m-%d-%Y") as end from events', function (error, results, fields) {
+        if (error) throw error;
+        res.json(results);
+    });
+});
+
 app.listen(8080);

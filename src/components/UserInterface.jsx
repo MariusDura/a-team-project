@@ -22,7 +22,7 @@ export default class UserInterface extends React.Component {
                         </div>
                     </div>
 
-                    <div class="btn-group-vertical">
+                    <div className="btn-group-vertical">
                         {/*<button type="button" className="btn btn-primary btn-sm">Your Profile</button>
                     <Link to="calendar"><button type="button" className="btn btn-primary btn-sm">Calendar</button></Link>*/}
                         <Link to="userInterface/addReminder"><button className="btn btn-primary btn-sm" style={{ float: 'left' }}>Add reminder</button></Link>

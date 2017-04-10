@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
+import request from 'superagent';
 
 export default class Calendar extends React.Component {
     componentDidMount() {
@@ -8,25 +8,26 @@ export default class Calendar extends React.Component {
         var m = date.getMonth();
         var y = date.getFullYear();
 
-        $('.calendar').fullCalendar({
-            header: {
-                left: 'prev,next today',
-                center: 'title',
-                right: 'month,agendaWeek,agendaDay'
-            },
-            editable: true,
-            events: [
-                {
-                    title: 'Miegojimas',
-                    start: new Date(y, m, 1)
-                },
-                {
-                    title: 'Eiti į paskaitas',
-                    start: new Date(y, m, 12),
-                    end: new Date(y, m, 14)
+        request
+            .get('/api/projects/calendarEvents')
+            .end((function (err, res) {
+                if (err) {
+                    console.log("Error: " + err);
                 }
-            ]
-        });
+                else {
+                    console.log(res.body);
+                    $('.calendar').fullCalendar({
+                        header: {
+                            left: 'prev,next today',
+                            center: 'title',
+                            right: 'month,agendaWeek,agendaDay'
+                        },
+                        editable: true,
+                        events: res.body
+                    });
+                }
+            }).bind(this));
+
     }
     render() {
         const temporary = (
