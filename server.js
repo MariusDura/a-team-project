@@ -79,6 +79,8 @@ app.post('/api/projects/addReminder', function (req, res) {
 
     let array = {
         title: req.body.title,
+        start: req.body.start,
+        end: req.body.end
     }
     console.log(req.body);
 
