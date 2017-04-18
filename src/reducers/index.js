@@ -1,9 +1,9 @@
 import { combineReducers } from 'redux';
 import { routerReducer } from 'react-router-redux';
 
-//import editProfileReducer from './editProfileReducer';
+import loginReducer from './loginReducer';
 
 export default combineReducers({
     routing: routerReducer,
-    //editProfile: editProfileReducer
+    login: loginReducer
 });

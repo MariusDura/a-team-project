@@ -2,16 +2,14 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import request from 'superagent';
 import { Link } from 'react-router';
+import {bindActionCreators} from 'redux';
+import { connect } from 'react-redux';
+import {loginAction} from '../actions/loginAction';
 
 class Loginas extends React.Component {
 
-
     constructor(props) {
         super(props);
-
-        this.state = {
-            authentification: false
-        };
 
         this.handleClick = this.handleClick.bind(this);
     }
@@ -51,15 +49,11 @@ class Loginas extends React.Component {
                     let atsakymas = res.text;
                     if (atsakymas == "true") {
                         console.log("Geras prisijungimas");
-                        this.setState({
-                            authentification: true
-                        });
+                        this.props.loginAction(true);
                     }
                     else {
                         console.log("blogas prisijungimas");
-                        this.setState({
-                            authentification: false
-                        });
+                        this.props.loginAction(false);
                         alert("Blogai įvesti prisijungimo duomenys");
                     }
                 }
@@ -73,8 +67,8 @@ class Loginas extends React.Component {
     render() {
         const buttons = (
             <div>
-                <div class="container col-sm-8">
-                    <div class="calendarStyle">
+                <div className="container col-sm-8">
+                    <div className="calendarStyle">
                         <div id="calendar"></div>
                     </div>
                 </div>
@@ -91,7 +85,7 @@ class Loginas extends React.Component {
 
             <div>
                 {/*{buttons2}*/}
-                {!this.state.authentification ? (
+                {!this.props.isLoggedIn ? (
                     <div className="loginStyle">
                         <form className="col-lg-3">
                             <div className="form-group" >
@@ -141,4 +135,16 @@ class Loginas extends React.Component {
     }
 }
 
-export default Loginas;
+function matchDispatchToProps(dispatch) {
+    return bindActionCreators({
+        loginAction: loginAction
+    }, dispatch);
+}
+
+function mapStateToProps(state) {
+    return {
+        isLoggedIn: state.login.isLoggedIn
+    };
+}
+
+export default connect(mapStateToProps, matchDispatchToProps)(Loginas);
