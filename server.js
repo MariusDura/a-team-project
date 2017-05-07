@@ -3,6 +3,7 @@ var app = express();
 var path = require('path');
 var router = express.Router();
 var bodyParser = require('body-parser');
+var passwordHash = require('password-hash');
 
 const mysql = require('mysql');
 
@@ -34,14 +35,14 @@ app.get('/api/projects', function (req, res) {
 
 app.post('/api/projects/useriai/add', function (req, res) {
 
+    var hashedPassword = passwordHash.generate(req.body.password);
     let array = {
         firstname: req.body.firstname,
         lastName: req.body.lastName,
         email: req.body.email,
-        password: req.body.password
+        password: hashedPassword
     }
-    console.log(req.body);
-
+    
     connection.query('INSERT INTO useriai SET?', array, function (err, result) {
         if (err) {
             console.log(err.message);
@@ -57,13 +58,19 @@ app.post('/api/projects/useriai/add', function (req, res) {
 
 
 app.post('/api/projects/login', function (req, res) {
-    console.log(req.body);
-    connection.query('SELECT * from useriai Where email = ? AND password = ?', [req.body.email, req.body.password], function (error, results, fields) {
+    connection.query('SELECT * from useriai Where email = ?', [req.body.email], function (error, results, fields) {
         if (error) throw error;
         if (results.length > 0) {
-            console.log(results);
-            console.log("true+");
-            res.send("true");
+            if (passwordHash.verify(req.body.password, results[0].password)) {
+                console.log(results);
+                console.log("true+");
+                res.send("true");
+            }
+            else {
+                console.log(results);
+                console.log("false+ bad verify");
+                res.send("false");
+            }
         }
         else {
             console.log("false+");

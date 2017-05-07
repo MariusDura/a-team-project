@@ -1,4 +1,5 @@
 import React from 'react';
+import passwordHash from 'password-hash';
 import ReactDOM from 'react-dom';
 import request from 'superagent';
 import { Link } from 'react-router';
@@ -14,24 +15,9 @@ class Loginas extends React.Component {
         this.handleClick = this.handleClick.bind(this);
     }
 
-
-    //Norint kreiptis į <button className="btn btn-danger" onClick={this.handleChange.bind(this)}>Bandymas</button>*
-    // kad reikšmė pasikeistų MainLayout state.prisijungta
-
-    // handleChange() {
-    //     var temp = true;
-    //     console.log("bandyyyymas " + temp);
-    //      console.log(this.props.onPaspaudimo);
-
-    //     this.props.onPaspaudimo(temp);
-    // }
-    //-------------------------------------------------------------------
-
-
     handleClick() {
 
         console.log("OPOP");
-
         request
             .post('/api/projects/login')
             .send({
@@ -106,8 +92,6 @@ class Loginas extends React.Component {
                                         <Link to="forgotPassword">Pamiršote slaptažodį?</Link>
                                         <p></p>
                                         <button type="button" className="btn btn-primary" onClick={this.handleClick}>Prisijungti</button>
-
-                                        {/*<button className="btn btn-danger" onClick={this.handleChange.bind(this)}>Bandymas</button>*/}
 
                                         {this.props.children}
                                     </div>
