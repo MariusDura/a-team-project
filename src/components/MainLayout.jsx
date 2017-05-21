@@ -4,6 +4,7 @@ import Login from './Login';
 import Register from './Register';
 import ForgotPassword from './ForgotPassword';
 import Calendar from './Calendar';
+import request from 'superagent';
 import { Link } from 'react-router';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
@@ -19,7 +20,44 @@ class MainLayout extends React.Component {
             prisijungta: false
         };
     }
+    componentDidMount() {
+        request
+            .get('/api/projects/login/authStatus')
+            .end((function (err, res) {
+                if (!err) {
+                    if (res.text != "") {
+                        console.log('wwwwwwwww1111', res);
+                        var response = JSON.parse(res.text);
+                        console.log(response);
+                        if (res.text != "" && response.success == "true") {
+                            this.props.loginAction(true);
+                        }
+                        else {
+                            this.props.loginAction(false);
+                        }
+                    }
+                    else {
+                        this.props.loginAction(false);
+                    }
+                }
+
+            }).bind(this));
+    }
+
     atsijungti() {
+        request
+            .post('/api/projects/login/auth2')
+            .send({
+                token: 'op'
+            })
+            .end((function (err, res) {
+                if (err) {
+                    console.log(err);
+                }
+                else {
+                    console.log(res);
+                }
+            }).bind(this));
         alert("Successfully Logged out");
         this.props.loginAction(false);
     }
@@ -30,7 +68,7 @@ class MainLayout extends React.Component {
     render() {
         return (
             <div>
-                <nav className="navbar navbar-default" style={{ marginBottom: '0px' }} style={{ 'border-radius': '1px' }}>
+                <nav className="navbar navbar-default" style={{ marginBottom: '0px' }} style={{ 'borderRadius': '1px' }}>
                     <div className="container-fluid">
                         {!this.props.isLoggedIn ? (
                             <ul className="nav navbar-nav navbar-right">
@@ -47,7 +85,7 @@ class MainLayout extends React.Component {
                                     </ul>
 
                                     <ul className="nav navbar-nav navbar-right">
-                                        <li className="active"><Link to="/" onClick={this.atsijungti.bind(this)}><span className="glyphicon glyphicon-log-out"></span> Logout</Link></li>
+                                        <li><Link to="/" onClick={this.atsijungti.bind(this)}><span className="glyphicon glyphicon-log-out"></span> Logout</Link></li>
                                     </ul>
                                 </div>
                             )
@@ -73,5 +111,4 @@ function mapStateToProps(state) {
     };
 }
 
-//export default MainLayout;
 export default connect(mapStateToProps, matchDispatchToProps)(MainLayout);

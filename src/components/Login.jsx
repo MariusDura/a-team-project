@@ -3,9 +3,9 @@ import passwordHash from 'password-hash';
 import ReactDOM from 'react-dom';
 import request from 'superagent';
 import { Link } from 'react-router';
-import {bindActionCreators} from 'redux';
+import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import {loginAction} from '../actions/loginAction';
+import { loginAction } from '../actions/loginAction';
 
 class Loginas extends React.Component {
 
@@ -29,13 +29,23 @@ class Loginas extends React.Component {
                     console.log("Error: " + err);
                 }
                 else {
-                    console.log(res.req._data);
                     console.log('www', res);
                     console.log(res.text);
-                    let atsakymas = res.text;
-                    if (atsakymas == "true") {
+                    var response = JSON.parse(res.text);
+                    let atsakymas = response.success;
+                    if (atsakymas) {
                         console.log("Geras prisijungimas");
                         this.props.loginAction(true);
+                        request
+                            .post('/api/projects/login/auth2')
+                            .send({
+                                token: response.token
+                            })
+                            .end((function (err, res) {
+                                if (err) {
+                                    console.log(err);
+                                }
+                            }).bind(this));
                     }
                     else {
                         console.log("blogas prisijungimas");
@@ -44,6 +54,8 @@ class Loginas extends React.Component {
                     }
                 }
             }).bind(this));
+
+
     }
 
     navigate() {
@@ -70,7 +82,6 @@ class Loginas extends React.Component {
         return (
 
             <div>
-                {/*{buttons2}*/}
                 {!this.props.isLoggedIn ? (
                     <div className="loginStyle">
                         <form className="col-lg-3">

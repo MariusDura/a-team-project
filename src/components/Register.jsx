@@ -70,8 +70,8 @@ class Register extends React.Component {
                             <div >
                                 <input
                                     ref={(input) => this.firstName = input}
-                                    pattern="[a-zA-Z]{5,}"
-                                    required title="Field can not be empty and valid inputs are required."
+                                    pattern="[a-zA-Z]{3,}"
+                                    required title="Field can not be empty and valid inputs are required. Only letters should be used."
                                     type="text"
                                     placeholder="Name"
                                     className="form-control"
@@ -83,8 +83,8 @@ class Register extends React.Component {
                                     placeholder="Surname"
                                     className="form-control"
                                     id="surname"
-                                    pattern="[a-zA-Z]{5,}"
-                                    required title="Field can not be empty and valid inputs are required."
+                                    pattern="[a-zA-Z]{3,}"
+                                    required title="Field can not be empty and valid inputs are required. Only letters should be used."
                                 />
                                 <input
                                     ref={(input) => this.emailAddress = input}
